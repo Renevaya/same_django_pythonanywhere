@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+<body>
+    <h1>Корзина</h1>
+    <a href="/">Магазин</a>
+    <a href="#">Корзина</a>
+    <a href="/logout">Выйти из аккаунта</a>
+    <div>
+        <div class="all_items">
+            {% for item in items %}
+                <hr>
+                    <div class="one_item">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        <p>Название: {{ item.product.name }}</p>
+                        <p>Количество: {{ item.quantity }}</p>
+                        <p>Стоимость: {{ item.product.price }}</p>
+                    </div>
+                <hr>
+            {% endfor %}
+        </div>
+    <hr>
+        <div class="info">
+            <h1>Общая стоимость: {{ total_price }}</h1>
+            <h1>Общее количество: {{ total_quantity }}</h1>
+            <a href="">Оформить заказ</a>
+        </div>
+    </div>
+</body>
+</html>

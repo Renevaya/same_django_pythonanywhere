@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    <h1>Добро пожаловать {{ user.username }}</h1>
+    <h1>Магазин</h1>
+    <a href="#">Магазин</a>
+    <a href="cart/">Корзина</a>
+    <a href="login/">Войти в аккаунт</a>
+    <a href="register/">Зарегистрироваться</a>
+
+    <div class="all_products">
+        {% for product in products %}
+        <div class="one_product">
+            <img src="{{ product.image.url }}">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <h1>{{ product.price }}</h1>
+            <a href="add_to_cart/{{ product.id }}">   <button>Добавить в корзину</button>   </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
